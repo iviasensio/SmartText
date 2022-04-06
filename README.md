@@ -25,8 +25,9 @@ This extension is a text object with simple and smart look.
 ### Look
 ![SmartText1](https://user-images.githubusercontent.com/11334576/162000315-c1d955a6-f19c-4c35-aa09-077cf0eb19be.png)
 ![SmartText2](https://user-images.githubusercontent.com/11334576/162000879-5d4831fe-ea1c-4c10-af3f-04603bdeba4c.png)
+![SmartText3](https://user-images.githubusercontent.com/11334576/162001416-a18da0e4-40a9-44de-b2f4-c8f6a16cc4de.png)
 
-*Install in Server:
+*Install in SaaS:
 - download the package and zip the extension stuff as SmartText Extension.zip
 - in the Management Console open the menu Extensions and import the zip
 - optional : in the main hub open the menu Import apps and import SDG - 12. Responsible Consumption & Production.qvf
