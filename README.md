@@ -24,7 +24,7 @@ This extension is a text object with simple and smart look.
 
 ### Look
 ![SmartText1](https://user-images.githubusercontent.com/11334576/162000315-c1d955a6-f19c-4c35-aa09-077cf0eb19be.png)
-![SmartText1](https://user-images.githubusercontent.com/11334576/162000338-08b6ef13-3c37-4dd8-b163-b883d88090a6.png)
+![SmartText2](https://user-images.githubusercontent.com/11334576/162000879-5d4831fe-ea1c-4c10-af3f-04603bdeba4c.png)
 
 *Install in Server:
 - download the package and zip the extension stuff as SmartText Extension.zip
