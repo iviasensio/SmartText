@@ -1,0 +1,39 @@
+.qv-panel-sheet .sheet-title-container {
+    background: #ce8c25!important;    
+}
+.qvt-sheet {
+    background: url(../img/backgrounds/grass.png);
+    background-repeat: no-repeat;
+    background-position: 0% 100%;
+    background-color: #f2f2f2;
+    overflow: hidden;
+}
+.qv-object-qlik-multi-kpi{
+    height: 0px;
+    width: 0px;    
+}
+.qv-object-qlik-multi-kpi{
+	height: 150px;
+    width: 150px;
+    background-image: url(../img/backgrounds/rider.gif);
+    background-repeat: no-repeat;
+    background-size: 150px;
+    display: inline-table;
+    background-position: right; 
+    overflow: hidden;
+	-webkit-animation: marquee 50s linear infinite;
+}
+
+.marquee.qv-object-qlik-multi-kpi{
+    overflow: hidden;
+	-webkit-animation: marquee 50s linear infinite;
+}
+
+@keyframes marquee {
+    0%   { right:0% }
+    100% { right:100% }
+}
+.qv-object .qv-inner-object {
+    background-color: transparent !important;
+    overflow: visible;
+}

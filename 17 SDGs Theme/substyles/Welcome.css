@@ -1,0 +1,15 @@
+.qv-object-qlik-multi-kpi{
+    height: 0px;
+    width: 0px;    
+}
+
+.qvt-sheet {
+  	background: url(../img/backgrounds/SirWilliamThomson.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+.qv-object .qv-inner-object {
+	background-color: transparent !important;
+	overflow: visible;
+}

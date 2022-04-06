@@ -1,0 +1,14 @@
+.qv-object-qlik-multi-kpi{height: 0px!important;}
+
+.qv-panel-sheet .sheet-title-container {
+    background: #ce8c25!important;
+}
+
+.qv-object-qlik-multi-kpi{
+    height: 0px;
+    width: 0px;    
+}
+.qv-object .qv-inner-object {
+	background-color: transparent !important;
+	overflow: visible;
+}

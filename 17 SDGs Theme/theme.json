@@ -1,0 +1,1392 @@
+{
+    "_variables": {
+        "@B20": "#595959",
+        "@B35": "#595959",
+        "@B45": "#737373",
+        "@B50": "#595959",
+        "@B51": "#595959",
+        "@B60": "#999999",
+        "@B80": "#ececec",
+        "@B90": "#fcfcfc",
+        "@B98": "#fbfbfb",
+        "@B100": "#ce8c25",
+        "@B110": "#EFF3F6",
+        "@H1": "26px",
+        "@H2": "20px",
+        "@H3": "16px",
+        "@H4": "15px",
+        "@H5": "14px",
+        "@H6": "12px"
+    },
+    "customStyles": [
+        {
+            "cssRef": "theme.css",
+            "classRef": "sdg"
+        }
+    ],
+    "color": "@B100",
+    "fontSize": "13px",
+    "fontFamily": "OpenSans",
+    "backgroundColor": "@B100",
+    "object": {
+        "line": {
+            "highContrast": {
+                "color": "@B60"
+            },
+            "major": {
+                "color": "@B80"
+            },
+            "minor": {
+                "color": "@B90"
+            }
+        },
+        "title": {
+            "main": {
+                "color": "@B51",
+                "fontSize": "15px"
+            },
+            "subTitle": {
+                "color": "@B50",
+                "fontSize": "12px"
+            },
+            "footer": {
+                "color": "@B50",
+                "fontSize": "10px"
+            }
+        },
+        "label": {
+            "name": {
+                "color": "@B100",
+                "fontSize": "13px"
+            },
+            "value": {
+                "color": "@B100",
+                "fontSize": "13px"
+            }
+        },
+        "axis": {
+            "title": {
+                "fontSize": "12px",
+                "color": "@B100"
+            },
+            "label": {
+                "name": {
+                    "color": "@B100",
+                    "fontSize": "14px"
+                }
+            },
+            "line": {
+                "major": {
+                    "color": "@B100"
+                },
+                "minor": {
+                    "color": "@B100"
+                }
+            }
+        },
+        "grid": {
+            "line": {
+                "highContrast": {
+                    "color": "@B60"
+                },
+                "major": {
+                    "color": "@B80"
+                },
+                "minor": {
+                    "color": "@B90"
+                }
+            }
+        },
+        "referenceLine": {
+            "label": {
+                "name": {
+                    "color": "@B20",
+                    "fontSize": "14px"
+                }
+            },
+            "outOfBounds": {
+                "color": "@B90",
+                "backgroundColor": "@B45",
+                "fontSize": "@H6"
+            }
+        },
+        "legend": {
+            "title": {
+                "fontSize": "14px",
+                "color": "@B20"
+            },
+            "label": {
+                "fontSize": "13px",
+                "color": "@B35"
+            }
+        },
+        "barChart": {
+            "outOfRange": {
+                "color": "@B100"
+            },
+            "title": {
+                "main": {
+                    "color": "@B100",
+                    "fontSize": "15px"
+                },
+                "subTitle": {
+                    "color": "@B100",
+                    "fontSize": "12px"
+                },
+                "footer": {
+                    "color": "@B100",
+                    "fontSize": "10px"
+                }
+            },
+            "label": {
+                "name": {
+                    "color": "@B100",
+                    "fontSize": "14px"
+                },
+                "value": {
+                    "color": "@B100",
+                    "fontSize": "14px"
+                }
+            },
+            "content": {
+                "fontSize": "@H4",
+                "color": "@B100"
+            }
+        },
+        "gauge": {
+            "label": {
+                "value": {
+                    "color": "@B20",
+                    "fontSize": "42px"
+                }
+            }
+        },
+        "treemap": {
+            "branch": {
+                "backgroundColor": ".shift(5)",
+                "label": {
+                    "color": ".inherit()",
+                    "fontSize": "14px"
+                }
+            },
+            "leaf": {
+                "label": {
+                    "fontSize": "12px"
+                }
+            }
+        },
+        "scatterPlot": {
+            "label": {
+                "value": {
+                    "color": "@B35",
+                    "fontSize": "12px"
+                }
+            }
+        },
+        "lineChart": {
+            "outOfRange": {
+                "color": "@B60"
+            },
+            "label": {
+                "value": {
+                    "color": "@B35",
+                    "fontSize": "12px"
+                }
+            }
+        },
+        "pieChart": {
+            "axis": {
+                "title": {
+                    "fontSize": "12px"
+                }
+            },
+            "label": {
+                "name": {
+                    "color": "@B20",
+                    "fontSize": "14px"
+                },
+                "value": {
+                    "fontSize": "12px"
+                }
+            }
+        },
+        "straightTable": {
+            "header": {
+                "fontSize": "@H4",
+                "color": "@B35"
+            },
+            "content": {
+                "fontSize": "@H4",
+                "color": "@B35"
+            }
+        },
+        "listBox": {
+            "title": {
+                "main": {
+                    "color": "@B35",
+                    "fontSize": "13px"
+                }
+            },
+            "content": {
+                "color": "@B35",
+                "fontSize": "12px"
+            }
+        },
+        "boxPlot": {
+            "box": {
+                "whisker": {
+                    "stroke": "@B35"
+                },
+                "line": {
+                    "stroke": "@B35"
+                },
+                "box": {
+                    "fill": "@B90",
+                    "stroke": "@B35"
+                }
+            }
+        },
+        "distributionPlot": {
+            "box": {
+                "fill": "@B90",
+                "stroke": "@B80"
+            }
+        },
+        "waterfallChart": {
+            "value": {
+                "color": {
+                    "default": "@B35",
+                    "dark": "@B35",
+                    "light": "@B90"
+                }
+            },
+            "shape": {
+                "positiveValue": {
+                    "fill": "#4477AA"
+                },
+                "negativeValue": {
+                    "fill": "#cc6677"
+                },
+                "subtotal": {
+                    "fill": "#c3c3c3"
+                },
+                "bridge": {
+                    "stroke": "@B50"
+                }
+            }
+        }
+    },
+    "dataColors": {
+        "primaryColor": "#525590",
+        "othersColor": "#a5a5a5",
+        "errorColor": "#ff4444",
+        "nullColor": "#d2d2d2",
+        "selectionColor": "#5293cc"
+    },
+    "scales": [
+        {
+            "name": "Diverging gradient",
+            "translation": "properties.colorScheme.diverging",
+            "propertyValue": "dg",
+            "type": "gradient",
+            "scale": [
+                "#c75dab",
+                "#d691c1",
+                "#e4c1d9",
+                "#f1f1f1",
+                "#a7d3d4",
+                "#42b7b9",
+                "#009b9e"
+            ]
+        },
+        {
+            "name": "Diverging Classes",
+            "translation": "properties.colorScheme.divergingC",
+            "propertyValue": "dc",
+            "type": "class",
+            "scale": [
+                "#c75dab",
+                "#d691c1",
+                "#e4c1d9",
+                "#f1f1f1",
+                "#a7d3d4",
+                "#42b7b9",
+                "#009b9e"
+            ]
+        },
+        {
+            "name": "Sequential gradient",
+            "translation": "properties.colorScheme.sequential",
+            "type": "gradient",
+            "propertyValue": "sg",
+            "scale": [
+                "#7c1d6f",
+                "#b9257a",
+                "#dc3977",
+                "#e34f6f",
+                "#f0746e",
+                "#faa476",
+                "#fcde9c"
+            ]
+        },
+        {
+            "name": "Sequential classes",
+            "translation": "properties.colorScheme.sequentialC",
+            "propertyValue": "sc",
+            "type": "class",
+            "scale": [
+                "#7c1d6f",
+                "#b9257a",
+                "#dc3977",
+                "#e34f6f",
+                "#f0746e",
+                "#faa476",
+                "#fcde9c"
+            ]
+        },
+        {
+            "name": "Diverging gradient v2",
+            "translation": "Diverging gradient v2",
+            "propertyValue": "custdg2",
+            "type": "gradient",
+            "scale": [
+                "#d46780",
+                "#df91a3",
+                "#f0c6c3",
+                "#fdfbe4",
+                "#d0d3a2",
+                "#a3ad62",
+                "#798234"
+            ]
+        },
+        {
+            "name": "Diverging classes v2",
+            "translation": "Diverging classes v2",
+            "propertyValue": "custdc2",
+            "type": "class",
+            "scale": [
+                "#d46780",
+                "#df91a3",
+                "#f0c6c3",
+                "#fdfbe4",
+                "#d0d3a2",
+                "#a3ad62",
+                "#798234"
+            ]
+        },
+        {
+            "name": "Diverging gradient v3",
+            "translation": "Diverging gradient v3",
+            "propertyValue": "custdg3",
+            "type": "gradient",
+            "scale": [
+                "#ca562c",
+                "#de8a5a",
+                "#edbb8a",
+                "#f6edbd",
+                "#b5b991",
+                "#778868",
+                "#3d5941"
+            ]
+        },
+        {
+            "name": "Diverging classes v3",
+            "translation": "Diverging classes v3",
+            "propertyValue": "custdc3",
+            "type": "class",
+            "scale": [
+                "#ca562c",
+                "#de8a5a",
+                "#edbb8a",
+                "#f6edbd",
+                "#b5b991",
+                "#778868",
+                "#3d5941"
+            ]
+        },
+        {
+            "name": "Diverging gradient v4",
+            "translation": "Diverging gradient v4",
+            "propertyValue": "custdg4",
+            "type": "gradient",
+            "scale": [
+                "#ca562c",
+                "#de8a5a",
+                "#edbb8a",
+                "#f6edbd",
+                "#b4c8a8",
+                "#70a494",
+                "#008080"
+            ]
+        },
+        {
+            "name": "Diverging classes v4",
+            "translation": "Diverging classes v4",
+            "propertyValue": "custdc4",
+            "type": "class",
+            "scale": [
+                "#ca562c",
+                "#de8a5a",
+                "#edbb8a",
+                "#f6edbd",
+                "#b4c8a8",
+                "#70a494",
+                "#008080"
+            ]
+        },
+        {
+            "name": "Diverging gradient v5",
+            "translation": "Diverging gradient v5",
+            "propertyValue": "custdg5",
+            "type": "gradient",
+            "scale": [
+                "#cf597e",
+                "#e88471",
+                "#eeb479",
+                "#e9e29c",
+                "#9ccb86",
+                "#39b185",
+                "#009392"
+            ]
+        },
+        {
+            "name": "Diverging classes v5",
+            "translation": "Diverging classes v5",
+            "propertyValue": "custdc5",
+            "type": "class",
+            "scale": [
+                "#cf597e",
+                "#e88471",
+                "#eeb479",
+                "#e9e29c",
+                "#9ccb86",
+                "#39b185",
+                "#009392"
+            ]
+        },
+        {
+            "name": "Diverging gradient v6",
+            "translation": "Diverging gradient v6",
+            "propertyValue": "custdg6",
+            "type": "gradient",
+            "scale": [
+                "#d0587e",
+                "#d98994",
+                "#e5b9ad",
+                "#f1eac8",
+                "#b1c7b3",
+                "#72aaa1",
+                "#009392"
+            ]
+        },
+        {
+            "name": "Diverging classes v6",
+            "translation": "Diverging classes v6",
+            "propertyValue": "custdc6",
+            "type": "class",
+            "scale": [
+                "#d0587e",
+                "#d98994",
+                "#e5b9ad",
+                "#f1eac8",
+                "#b1c7b3",
+                "#72aaa1",
+                "#009392"
+            ]
+        },
+        {
+            "name": "Diverging gradient v7",
+            "translation": "Diverging gradient v7",
+            "propertyValue": "custdg7",
+            "type": "gradient",
+            "scale": [
+                "#a16928",
+                "#bd925a",
+                "#d6bd8d",
+                "#edeac2",
+                "#b5c8b8",
+                "#79a7ac",
+                "#2887a1"
+            ]
+        },
+        {
+            "name": "Diverging classes v7",
+            "translation": "Diverging classes v7",
+            "propertyValue": "custdc7",
+            "type": "class",
+            "scale": [
+                "#a16928",
+                "#bd925a",
+                "#d6bd8d",
+                "#edeac2",
+                "#b5c8b8",
+                "#79a7ac",
+                "#2887a1"
+            ]
+        },
+        {
+            "name": "Sequential gradient v2",
+            "translation": "Sequential gradient v2",
+            "propertyValue": "custsg2",
+            "type": "gradient",
+            "scale": [
+                "#672044",
+                "#8b3058",
+                "#ad466c",
+                "#cc607d",
+                "#e38191",
+                "#f4a3a8",
+                "#ffc6c4"
+            ]
+        },
+        {
+            "name": "Sequential classes v2",
+            "translation": "Sequential classes v2",
+            "propertyValue": "custsc2",
+            "type": "class",
+            "scale": [
+                "#672044",
+                "#8b3058",
+                "#ad466c",
+                "#cc607d",
+                "#e38191",
+                "#f4a3a8",
+                "#ffc6c4"
+            ]
+        },
+        {
+            "name": "Sequential gradient v3",
+            "translation": "Sequential gradient v3",
+            "propertyValue": "custsg3",
+            "type": "gradient",
+            "scale": [
+                "#70284a",
+                "#9c3f5d",
+                "#c8586c",
+                "#dc7176",
+                "#ee8a82",
+                "#f5ba98",
+                "#fbe6c5"
+            ]
+        },
+        {
+            "name": "Sequential classes v3",
+            "translation": "Sequential classes v3",
+            "propertyValue": "custsc3",
+            "type": "class",
+            "scale": [
+                "#70284a",
+                "#9c3f5d",
+                "#c8586c",
+                "#dc7176",
+                "#ee8a82",
+                "#f5ba98",
+                "#fbe6c5"
+            ]
+        },
+        {
+            "name": "Sequential gradient v4",
+            "translation": "Sequential gradient v4",
+            "propertyValue": "custsg4",
+            "type": "gradient",
+            "scale": [
+                "#b13f64",
+                "#ca5268",
+                "#dd686c",
+                "#ea8171",
+                "#f19c7c",
+                "#f5b78e",
+                "#f6d2a9"
+            ]
+        },
+        {
+            "name": "Sequential classes v4",
+            "translation": "Sequential classes v4",
+            "propertyValue": "custsc4",
+            "type": "class",
+            "scale": [
+                "#b13f64",
+                "#ca5268",
+                "#dd686c",
+                "#ea8171",
+                "#f19c7c",
+                "#f5b78e",
+                "#f6d2a9"
+            ]
+        },
+        {
+            "name": "Sequential gradient v5.1",
+            "translation": "Sequential gradient v5.1",
+            "propertyValue": "custsg51",
+            "type": "gradient",
+            "scale": [
+                "#B86867",
+                "#C27372",
+                "#CB7D7C",
+                "#D58887",
+                "#DE9392",
+                "#E89D9C",
+                "#F1A8A7"
+            ]
+        },
+        {
+            "name": "Sequential gradient v5",
+            "translation": "Sequential gradient v5",
+            "propertyValue": "custsg5",
+            "type": "gradient",
+            "scale": [
+                "#ee4d5a",
+                "#f66356",
+                "#f97b57",
+                "#f7945d",
+                "#f3ad6a",
+                "#efc47e",
+                "#ecda9a"
+            ]
+        },
+        {
+            "name": "Sequential classes v5",
+            "translation": "Sequential classes v5",
+            "propertyValue": "custsc5",
+            "type": "class",
+            "scale": [
+                "#ee4d5a",
+                "#f66356",
+                "#f97b57",
+                "#f7945d",
+                "#f3ad6a",
+                "#efc47e",
+                "#ecda9a"
+            ]
+        },
+        {
+            "name": "Sequential gradient v6",
+            "translation": "Sequential gradient v6",
+            "propertyValue": "custsg6",
+            "type": "gradient",
+            "scale": [
+                "#eb4a40",
+                "#ef6a4c",
+                "#f2855d",
+                "#f59e72",
+                "#f8b58b",
+                "#facba6",
+                "#fde0c5"
+            ]
+        },
+        {
+            "name": "Sequential classes v6",
+            "translation": "Sequential classes v6",
+            "propertyValue": "custsc6",
+            "type": "class",
+            "scale": [
+                "#eb4a40",
+                "#ef6a4c",
+                "#f2855d",
+                "#f59e72",
+                "#f8b58b",
+                "#facba6",
+                "#fde0c5"
+            ]
+        },
+        {
+            "name": "Sequential gradient v7",
+            "translation": "Sequential gradient v7",
+            "propertyValue": "custsg7",
+            "type": "gradient",
+            "scale": [
+                "#e15383",
+                "#f16d7a",
+                "#fa8a76",
+                "#ffa679",
+                "#ffc285",
+                "#ffdd9a",
+                "#fef6b5"
+            ]
+        },
+        {
+            "name": "Sequential classes v7",
+            "translation": "Sequential classes v7",
+            "propertyValue": "custsc7",
+            "type": "class",
+            "scale": [
+                "#e15383",
+                "#f16d7a",
+                "#fa8a76",
+                "#ffa679",
+                "#ffc285",
+                "#ffdd9a",
+                "#fef6b5"
+            ]
+        },
+        {
+            "name": "Sequential gradient v8",
+            "translation": "Sequential gradient v8",
+            "propertyValue": "custsg8",
+            "type": "gradient",
+            "scale": [
+                "#0d585f",
+                "#287274",
+                "#448c8a",
+                "#63a6a0",
+                "#89c0b6",
+                "#b4d9cc",
+                "#e4f1e1"
+            ]
+        },
+        {
+            "name": "Sequential classes v8",
+            "translation": "Sequential classes v8",
+            "propertyValue": "custsc8",
+            "type": "class",
+            "scale": [
+                "#0d585f",
+                "#287274",
+                "#448c8a",
+                "#63a6a0",
+                "#89c0b6",
+                "#b4d9cc",
+                "#e4f1e1"
+            ]
+        },
+        {
+            "name": "Sequential gradient v9",
+            "translation": "Sequential gradient v9",
+            "propertyValue": "custsg9",
+            "type": "gradient",
+            "scale": [
+                "#1d4f60",
+                "#266b6e",
+                "#36877a",
+                "#4da284",
+                "#6dbc90",
+                "#96d2a4",
+                "#c4e6c3"
+            ]
+        },
+        {
+            "name": "Sequential classes v9",
+            "translation": "Sequential classes v9",
+            "propertyValue": "custsc9",
+            "type": "class",
+            "scale": [
+                "#1d4f60",
+                "#266b6e",
+                "#36877a",
+                "#4da284",
+                "#6dbc90",
+                "#96d2a4",
+                "#c4e6c3"
+            ]
+        },
+        {
+            "name": "Sequential gradient v10",
+            "translation": "Sequential gradient v10",
+            "propertyValue": "custsg10",
+            "type": "gradient",
+            "scale": [
+                "#123f5a",
+                "#235d72",
+                "#3a7c89",
+                "#559c9e",
+                "#7bbcb0",
+                "#a5dbc2",
+                "#d2fbd4"
+            ]
+        },
+        {
+            "name": "Sequential classes v10",
+            "translation": "Sequential classes v10",
+            "propertyValue": "custsc10",
+            "type": "class",
+            "scale": [
+                "#123f5a",
+                "#235d72",
+                "#3a7c89",
+                "#559c9e",
+                "#7bbcb0",
+                "#a5dbc2",
+                "#d2fbd4"
+            ]
+        },
+        {
+            "name": "Sequential gradient v11",
+            "translation": "Sequential gradient v11",
+            "propertyValue": "custsg11",
+            "type": "gradient",
+            "scale": [
+                "#074050",
+                "#105965",
+                "#217a79",
+                "#4c9b82",
+                "#6cc08b",
+                "#97e196",
+                "#d3f2a3"
+            ]
+        },
+        {
+            "name": "Sequential classes v11",
+            "translation": "Sequential classes v11",
+            "propertyValue": "custsc11",
+            "type": "class",
+            "scale": [
+                "#074050",
+                "#105965",
+                "#217a79",
+                "#4c9b82",
+                "#6cc08b",
+                "#97e196",
+                "#d3f2a3"
+            ]
+        },
+        {
+            "name": "Sequential gradient v12",
+            "translation": "Sequential gradient v12",
+            "propertyValue": "custsg12",
+            "type": "gradient",
+            "scale": [
+                "#045275",
+                "#00718b",
+                "#089099",
+                "#46aea0",
+                "#7ccba2",
+                "#b7e6a5",
+                "#f7feae"
+            ]
+        },
+        {
+            "name": "Sequential classes v12",
+            "translation": "Sequential classes v12",
+            "propertyValue": "custsc12",
+            "type": "class",
+            "scale": [
+                "#045275",
+                "#00718b",
+                "#089099",
+                "#46aea0",
+                "#7ccba2",
+                "#b7e6a5",
+                "#f7feae"
+            ]
+        },
+        {
+            "name": "Sequential gradient v13",
+            "translation": "Sequential gradient v13",
+            "propertyValue": "custsg13",
+            "type": "gradient",
+            "scale": [
+                "#2a5674",
+                "#3b738f",
+                "#4f90a6",
+                "#68abb8",
+                "#85c4c9",
+                "#a8dbd9",
+                "#d1eeea"
+            ]
+        },
+        {
+            "name": "Sequential classes v13",
+            "translation": "Sequential classes v13",
+            "propertyValue": "custsc13",
+            "type": "class",
+            "scale": [
+                "#2a5674",
+                "#3b738f",
+                "#4f90a6",
+                "#68abb8",
+                "#85c4c9",
+                "#a8dbd9",
+                "#d1eeea"
+            ]
+        },
+        {
+            "name": "Sequential gradient v14",
+            "translation": "Sequential gradient v14",
+            "propertyValue": "custsg14",
+            "type": "gradient",
+            "scale": [
+                "#257d98",
+                "#2c98a0",
+                "#38b2a3",
+                "#4cc8a3",
+                "#67dba5",
+                "#89e8ac",
+                "#b0f2bc"
+            ]
+        },
+        {
+            "name": "Sequential classes v14",
+            "translation": "Sequential classes v14",
+            "propertyValue": "custsc14",
+            "type": "class",
+            "scale": [
+                "#257d98",
+                "#2c98a0",
+                "#38b2a3",
+                "#4cc8a3",
+                "#67dba5",
+                "#89e8ac",
+                "#b0f2bc"
+            ]
+        },
+        {
+            "name": "Sequential gradient v15",
+            "translation": "Sequential gradient v15",
+            "propertyValue": "custsg15",
+            "type": "gradient",
+            "scale": [
+                "#63589f",
+                "#826dba",
+                "#9f82ce",
+                "#b998dd",
+                "#d1afe8",
+                "#e4c7f1",
+                "#f3e0f7"
+            ]
+        },
+        {
+            "name": "Sequential classes v15",
+            "translation": "Sequential classes v15",
+            "propertyValue": "custsc15",
+            "type": "class",
+            "scale": [
+                "#63589f",
+                "#826dba",
+                "#9f82ce",
+                "#b998dd",
+                "#d1afe8",
+                "#e4c7f1",
+                "#f3e0f7"
+            ]
+        },
+        {
+            "name": "Sequential gradient v16",
+            "translation": "Sequential gradient v16",
+            "propertyValue": "custsg16",
+            "type": "gradient",
+            "scale": [
+                "#573b88",
+                "#834ba0",
+                "#ad5fad",
+                "#ce78b3",
+                "#e597b9",
+                "#f2b9c4",
+                "#f9ddda"
+            ]
+        },
+        {
+            "name": "Sequential classes v16",
+            "translation": "Sequential classes v16",
+            "propertyValue": "custsc16",
+            "type": "class",
+            "scale": [
+                "#573b88",
+                "#834ba0",
+                "#ad5fad",
+                "#ce78b3",
+                "#e597b9",
+                "#f2b9c4",
+                "#f9ddda"
+            ]
+        },
+        {
+            "name": "Sequential gradient v17",
+            "translation": "Sequential gradient v17",
+            "propertyValue": "custsg17",
+            "type": "gradient",
+            "scale": [
+                "#6c2167",
+                "#91357d",
+                "#b14d8e",
+                "#ca699d",
+                "#dd88ac",
+                "#eaa9bd",
+                "#f3cbd3"
+            ]
+        },
+        {
+            "name": "Sequential classes v17",
+            "translation": "Sequential classes v17",
+            "propertyValue": "custsc17",
+            "type": "class",
+            "scale": [
+                "#6c2167",
+                "#91357d",
+                "#b14d8e",
+                "#ca699d",
+                "#dd88ac",
+                "#eaa9bd",
+                "#f3cbd3"
+            ]
+        },
+        {
+            "name": "Sequential gradient v18",
+            "translation": "Sequential gradient v18",
+            "propertyValue": "custsg18",
+            "type": "gradient",
+            "scale": [
+                "#5c53a5",
+                "#a059a0",
+                "#ce6693",
+                "#eb7f86",
+                "#f8a07e",
+                "#fac484",
+                "#f3e79b"
+            ]
+        },
+        {
+            "name": "Sequential classes v18",
+            "translation": "Sequential classes v18",
+            "propertyValue": "custsc18",
+            "type": "class",
+            "scale": [
+                "#5c53a5",
+                "#a059a0",
+                "#ce6693",
+                "#eb7f86",
+                "#f8a07e",
+                "#fac484",
+                "#f3e79b"
+            ]
+        },
+        {
+            "name": "Sequential gradient v19",
+            "translation": "Sequential gradient v19",
+            "propertyValue": "custsg19",
+            "type": "gradient",
+            "scale": [
+                "#541f3f",
+                "#813753",
+                "#a65461",
+                "#c1766f",
+                "#d39c83",
+                "#e0c2a2",
+                "#ede5cf"
+            ]
+        },
+        {
+            "name": "Sequential classes v19",
+            "translation": "Sequential classes v19",
+            "propertyValue": "custsc19",
+            "type": "class",
+            "scale": [
+                "#541f3f",
+                "#813753",
+                "#a65461",
+                "#c1766f",
+                "#d39c83",
+                "#e0c2a2",
+                "#ede5cf"
+            ]
+        }
+    ],
+    "palettes": {
+        "data": [
+            {
+                "name": "12 Colors",
+                "translation": "properties.colorNumberOfColors.12",
+                "propertyValue": "12",
+                "type": "pyramid",
+                "scale": [
+                    [
+                        "#e58606",
+                        "#5d69b1",
+                        "#52bca3",
+                        "#99c945",
+                        "#cc61b0",
+                        "#24796c",
+                        "#daa51b",
+                        "#2f8ac4",
+                        "#764e9f",
+                        "#ed645a",
+                        "#cc3a8e",
+                        "#a5aa99"
+                    ],
+                    [
+                        "#e58606",
+                        "#5d69b1",
+                        "#52bca3",
+                        "#99c945",
+                        "#cc61b0",
+                        "#24796c",
+                        "#daa51b",
+                        "#2f8ac4",
+                        "#764e9f",
+                        "#ed645a",
+                        "#cc3a8e",
+                        "#a5aa99"
+                    ]
+                ]
+            },
+            {
+                "name": "12 Colors v2",
+                "translation": "12 Colors v2",
+                "propertyValue": "cust12v2",
+                "type": "pyramid",
+                "scale": [
+                    [
+                        "#7f3c8d",
+                        "#11a579",
+                        "#3969ac",
+                        "#f2b701",
+                        "#e73f74",
+                        "#80ba5a",
+                        "#e68310",
+                        "#008695",
+                        "#cf1c90",
+                        "#f97b72",
+                        "#4b4b8f",
+                        "#a5aa99"
+                    ]
+                ]
+            },
+            {
+                "name": "12 Colors v3",
+                "translation": "12 Colors v3",
+                "propertyValue": "cust12v3",
+                "type": "pyramid",
+                "scale": [
+                    [
+                        "#5f4690",
+                        "#1d6996",
+                        "#38a6a5",
+                        "#0f8554",
+                        "#73af48",
+                        "#edad08",
+                        "#e17c05",
+                        "#cc503e",
+                        "#94346e",
+                        "#6f4070",
+                        "#994e95",
+                        "#666666"
+                    ]
+                ]
+            },
+            {
+                "name": "12 Colors v4",
+                "translation": "12 Colors v4",
+                "propertyValue": "cust12v4",
+                "type": "pyramid",
+                "scale": [
+                    [
+                        "#66c5cc",
+                        "#f6cf71",
+                        "#f89c74",
+                        "#dcb0f2",
+                        "#87c55f",
+                        "#9eb9f3",
+                        "#fe88b1",
+                        "#c9db74",
+                        "#8be0a4",
+                        "#b497e7",
+                        "#d3b484",
+                        "#b3b3b3"
+                    ]
+                ]
+            },
+            {
+                "name": "12 Colors v5",
+                "translation": "12 Colors v5",
+                "propertyValue": "cust12v5",
+                "type": "pyramid",
+                "scale": [
+                    [
+                        "#855c75",
+                        "#d9af6b",
+                        "#af6458",
+                        "#736f4c",
+                        "#526a83",
+                        "#625377",
+                        "#68855c",
+                        "#9c9c5e",
+                        "#a06177",
+                        "#8c785d",
+                        "#467378",
+                        "#7c7c7c"
+                    ]
+                ]
+            },
+            {
+                "name": "12 Colors v6",
+                "translation": "12 Colors v6",
+                "propertyValue": "cust12v6",
+                "type": "pyramid",
+                "scale": [
+                    [
+                        "#88ccee",
+                        "#cc6677",
+                        "#ddcc77",
+                        "#117733",
+                        "#332288",
+                        "#aa4499",
+                        "#44aa99",
+                        "#999933",
+                        "#882255",
+                        "#661100",
+                        "#6699cc",
+                        "#888888"
+                    ]
+                ]
+            },
+            {
+                "name": "Flat UI Colors",
+                "translation": "Flat UI Colors",
+                "propertyValue": "custFlatUI",
+                "type": "pyramid",
+                "scale": [
+                    [
+                        "#1abc9c",
+                        "#2ecc71",
+                        "#3498db",
+                        "#9b59b6",
+                        "#34495e",
+                        "#f1c40f",
+                        "#e67e22",
+                        "#e74c3c",
+                        "#95a5a6",
+                        "#16a085",
+                        "#27ae60",
+                        "#2980b9",
+                        "#8e44ad",
+                        "#2c3e50",
+                        "#f39c12",
+                        "#d35400",
+                        "#c0392b",
+                        "#7f8c8d"
+                    ]
+                ]
+            },
+            {
+                "name": "100 Colors",
+                "translation": "properties.colorNumberOfColors.100",
+                "propertyValue": "100",
+                "type": "row",
+                "scale": [
+                    "#99c867",
+                    "#e43cd0",
+                    "#e2402a",
+                    "#66a8db",
+                    "#3f1a20",
+                    "#e5aa87",
+                    "#3c6b59",
+                    "#aa2a6b",
+                    "#e9b02e",
+                    "#7864dd",
+                    "#65e93c",
+                    "#5ce4ba",
+                    "#d0e0da",
+                    "#d796dd",
+                    "#64487b",
+                    "#e4e72b",
+                    "#6f7330",
+                    "#932834",
+                    "#ae6c7d",
+                    "#986717",
+                    "#e3cb70",
+                    "#408c1d",
+                    "#dd325f",
+                    "#533d1c",
+                    "#2a3c54",
+                    "#db7127",
+                    "#72e3e2",
+                    "#e2c1da",
+                    "#d47555",
+                    "#7d7f81",
+                    "#54ae9b",
+                    "#e9daa6",
+                    "#3a8855",
+                    "#5be66e",
+                    "#ab39a4",
+                    "#a6e332",
+                    "#6c469d",
+                    "#e39e51",
+                    "#4f1c42",
+                    "#273c1c",
+                    "#aa972e",
+                    "#8bb32a",
+                    "#bdeca5",
+                    "#63ec9b",
+                    "#9c3519",
+                    "#aaa484",
+                    "#72256d",
+                    "#4d749f",
+                    "#9884df",
+                    "#e590b8",
+                    "#44b62b",
+                    "#ad5792",
+                    "#c65dea",
+                    "#e670ca",
+                    "#e38783",
+                    "#29312d",
+                    "#6a2c1e",
+                    "#d7b1aa",
+                    "#b1e7c3",
+                    "#cdc134",
+                    "#9ee764",
+                    "#56b8ce",
+                    "#2c6323",
+                    "#65464a",
+                    "#b1cfea",
+                    "#3c7481",
+                    "#3a4e96",
+                    "#6493e1",
+                    "#db5656",
+                    "#747259",
+                    "#bbabe4",
+                    "#e33f92",
+                    "#d0607d",
+                    "#759f79",
+                    "#9d6b5e",
+                    "#8574ae",
+                    "#7e304c",
+                    "#ad8fac",
+                    "#4b77de",
+                    "#647e17",
+                    "#b9c379",
+                    "#8da8b0",
+                    "#b972d9",
+                    "#786279",
+                    "#7ec07d",
+                    "#916436",
+                    "#2d274f",
+                    "#dce680",
+                    "#759748",
+                    "#dae65a",
+                    "#459c49",
+                    "#b7934a",
+                    "#51c671",
+                    "#9ead3f",
+                    "#969a5c",
+                    "#b9976a",
+                    "#46531a",
+                    "#c0f084",
+                    "#76c146",
+                    "#bad0ad"
+                ]
+            }
+        ],
+        "ui": [
+            {
+                "name": "Palette",
+                "colors": [
+                    "#b0afae",
+                    "#7b7a78",
+                    "#a54343",
+                    "#d76c6c",
+                    "#ec983d",
+                    "#235A42",
+                    "#f9ec86",
+                    "#cbe989",
+                    "#70ba6e",
+                    "#578b60",
+                    "#79d69f",
+                    "#26a0a7",
+                    "#138185",
+                    "#65d3da",
+                    "#ffffff",
+                    "#000000"
+                ]
+            }
+        ]
+    }
+}

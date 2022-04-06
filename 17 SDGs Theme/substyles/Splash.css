@@ -1,0 +1,32 @@
+.qv-object-qlik-multi-kpi{
+    height: 0px;
+    width: 0px;    
+}
+
+.qvt-sheet {
+  	background: black;
+}
+
+.qv-object-barchart{
+    background-image: url("../img/backgrounds/WaterSplashing.gif")!important;
+    background-repeat: no-repeat;
+    background-size: cover;    
+}
+.qv-object-kpi{
+    text-shadow: 2px 7px 5px rgba(0,0,0,0.3), 
+    0px -4px 10px rgba(255,255,255,0.3);
+}
+.qv-object-action-button{
+    background:transparent;
+}
+.qv-object .qv-inner-object {
+    background-color: transparent !important;
+    overflow: visible;
+}
+@media screen and (max-height: 480px), screen and (max-width: 640px) {    
+    .sheet-list #grid {
+        background: url(../img/backgrounds/WaterSplashing.gif);
+        background-size: cover;
+        background-repeat: no-repeat;
+    }
+}
