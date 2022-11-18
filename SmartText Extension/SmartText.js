@@ -1,3 +1,4 @@
+var vBorderRadius = '0px';	
 define( [
 	"qlik",
 	"css!./css/style.css",
@@ -36,6 +37,9 @@ function (qlik,style,properties) {
 		        }
 		    }
 		},
+		beforeDestroy: function(){
+			//$('#smarttext-style').remove();
+		},
 		paint: function ( $element, layout) {
 			var app = qlik.currApp(this);
 			var vddd = new Date();
@@ -70,6 +74,8 @@ function (qlik,style,properties) {
 			var myJsonDataRow = [];
 			
 			// the measures properties values	
+			var vId = layout.qInfo.qId;
+			$('#smarttext-style-' + vId).remove();
 			layout.qHyperCube.qMeasureInfo.forEach(function (m,n) {
          		//Text
          		switch (m.tagtype){
@@ -111,7 +117,10 @@ function (qlik,style,properties) {
 		         		var vTitle;
 		         		var vCursor = '';
 		         		var vRef = '';
-						
+						var vNavMove = '';
+						if(m.textnavurlmove){
+							vNavMove = '_self';
+						}
 		         		switch (m.textnavbool){
 		         			case 'none':
 		         				vTitle = 'No navigation';
@@ -127,7 +136,7 @@ function (qlik,style,properties) {
 		         			case 'url':
 		         				vTitle = m.textnavurl;
 		         				vCursor = 'SmartText-cursor-url';
-		         				vRef = 'url';
+		         				vRef = 'url' + vNavMove;
 		         			break;
 
 		         			default:
@@ -175,9 +184,11 @@ function (qlik,style,properties) {
 			var vBorderBool = layout.borderbool;			
 			var vBorder = 'none';
 			var vBorderWidth = 0;
+					
 			
 			if(vBorderBool){
             	vBorder = layout.borderwidth + 'px solid ' + layout.bordercolor.color;
+            	vBorderRadius = layout.borderradius + 'px';
             	vBorderWidth = layout.borderwidth * 2;
             	/*switch (layout.borderwidth){
             		case 1:
@@ -269,7 +280,7 @@ function (qlik,style,properties) {
 			        }
 		            vImgPath = vServerURL + auximg;
 		        }else{
-		        	vImgPath = layout.sideimageurl;			        	
+		        	vImgPath = layout.sideimageurl;		        	
 		        }
 	        }
             
@@ -292,6 +303,10 @@ function (qlik,style,properties) {
 
             //Navigation through images
             var vSideTitle,vSideCursor,vSideRef;
+            var vSideNavMove = '';            
+        	if(layout.sidenavurlmove){
+        		vSideNavMove = '_self';        		
+        	}
             switch (layout.sidenavbool){
      			case 'none':
      				vSideTitle = 'No navigation';
@@ -308,7 +323,7 @@ function (qlik,style,properties) {
      			case 'url':
      				vSideTitle = layout.sidenavurl;
      				vSideCursor = 'SmartText-cursor-url';
-     				vSideRef = 'url';
+     				vSideRef = 'url' + vSideNavMove;
      			break;
 
      			default:
@@ -320,14 +335,14 @@ function (qlik,style,properties) {
 
             var html = '<div qv-extension class = "SmartText-extension">';
             
-			html += '<div id = "SmartText-box-' + vSufixId + '" class="SmartText-box" style = "background:' + vBackgroundColor + ';height:calc(100% - ' + vBorderWidth + 'px);border:' + vBorder + ';transform:rotate(' + layout.rotation + 'deg);">';
+			html += '<div id = "SmartText-box-' + vSufixId + '" class="SmartText-box" style = "background:' + vBackgroundColor + ';height:calc(100% - ' + vBorderWidth + 'px);border:' + vBorder + ';border-radius:' + vBorderRadius + ';transform:rotate(' + layout.rotation + 'deg);">';
 			var vSideImgWidth = layout.sideimgperc + '%';
 			var vSideIconWidth = vSideImgWidth;
 			var vIconSize = layout.sideiconsize  + '%';
 			
 			/*In case there is a background image*/
 			//if(cssBackImg != ''){
-            	html += '<div id = "SmartText-img-bg-' + vSufixId + '" class="SmartText-img-bg" style = "' + cssBackImg + ';opacity:' + layout.backgroundopacity + '"></div>';
+            	html += '<div id = "SmartText-img-bg-' + vSufixId + '" class="SmartText-img-bg" style = "border-radius:' + vBorderRadius + ';' + cssBackImg + ';opacity:' + layout.backgroundopacity + '"></div>';
             //}
 
 			/*In case there is a side image*/
@@ -335,7 +350,7 @@ function (qlik,style,properties) {
             	html +=	'<div id = "SmartText-img-container" class = "SmartText-img-container ' + vSideCursor +'" href = "' + vSideRef + '" style = "width:' + vSideImgWidth + '" title = "' + vSideTitle + '">';
             		
         		if(vImgPath != vServerURL){
-        			html += '<image class = "SmartText-img" src="' + vImgPath + '" style = "' + layout.sideverticalalign + ';opacity:' + layout.sideimgopacity + '"></image>';        				
+        			html += '<image class = "SmartText-img" src="' + vImgPath + '" style = "' + layout.sideverticalalign + ';opacity:' + layout.sideimgopacity + ';margin:' + layout.sideimgpadding + 'px"></image>';        				
         		}
         		if(layout.sideiconbool){
 					//html += '<div id = "SmartText-icon-container" class = "SmartText-icon-container" style = "width:' + vSideIconWidth + ';height:' + vSideIconWidth + ';' + layout.sideverticalalign +'">';
@@ -392,7 +407,13 @@ function (qlik,style,properties) {
             	return htmlSep;
 			}
 					
-			$element.html(html);			
+			$element.html(html);
+			
+			if(layout.shadowbool){
+				var vBorderShadow = '';
+				vBorderShadow = 'div[tid="' + vId + '"] .qv-object {border-radius:' + vBorderRadius +';box-shadow: 5px ' + layout.shadowwidth + 'px 18px ' + layout.shadowcolor.color + ';}';
+				$('<style id="smarttext-style-' + vId + '"></style>').html(vBorderShadow).appendTo('head');
+			}
 			
 			//set field value
 			$('.SmartText-cursor-action-field').on('click', function(event){
@@ -403,8 +424,7 @@ function (qlik,style,properties) {
 					var qVal = vName.substring(vName.indexOf('||') + 2,30);
 					app.field(qField).selectValues([{qText:qVal}]);
 					
-					if(vHref == 'sheet'){
-						console.log('entro')
+					if(vHref == 'sheet'){						
 						qlik.navigation.gotoSheet(this.title);
 					}else{
 						if(vHref == 'url'){
@@ -421,13 +441,16 @@ function (qlik,style,properties) {
 					var qVar = vName.substring(0,vName.indexOf('||'));
 					var qVal = vName.substring(vName.indexOf('||') + 2,30);
 					app.variable.setContent(qVar, qVal);
-
 					if(vHref == 'sheet'){
-						console.log('entro')
 						qlik.navigation.gotoSheet(this.title);
 					}else{
 						if(vHref == 'url'){
 							window.open(this.title);
+						}else{
+							if(vHref == 'url_self'){
+								//parent.location is the only way to allow jumping properly from an iframe integration
+								parent.location = this.title;
+							}
 						}
 					}
 				}
@@ -440,8 +463,16 @@ function (qlik,style,properties) {
 			})
 			//navigate to a url, open a new tab
 			$('.SmartText-cursor-url').on('click', function(event){
+				var vHref = this.getAttribute('href');
 				if((qlik.navigation.getMode() == 'analysis' || qlik.navigation.getMode() == 'play') && this.title != 'undefined'){
-					window.open(this.title);
+					if(vHref == 'url'){
+						window.open(this.title);
+					}else{
+						if(vHref == 'url_self'){
+							//parent.location is the only way to allow jumping properly from an iframe integration
+							parent.location = this.title;
+						}
+					}
 				}
 			})
 			$('.SmartText-cursor').on('mouseenter', function(event){

@@ -512,6 +512,23 @@ define(['qlik','./js/util'], function (qlik, utils) {
                             return data.qDef.textnavbool == 'url';
                         }
                     },
+                    TextNavigationUrlMove: {
+                        ref : "qDef.textnavurlmove",
+                        type : "boolean",
+                        component : "switch",
+                        label : "Use current window",
+                        options: [{
+                            value: false,
+                            label: "False"
+                        }, {
+                            value: true,
+                            label: "True"
+                        }],
+                        defaultValue: false,
+                        show : function(data) {
+                            return data.qDef.textnavbool == 'url';
+                        }
+                    },                   
                     TextActionColor: {
                         ref: "qDef.textactioncolor",
                         label: "Text action color",
@@ -695,23 +712,12 @@ define(['qlik','./js/util'], function (qlik, utils) {
                                 ref: "sideimgperc",
                                 min: 10,
                                 max: 200,
-                                step: 10,
+                                step: 5,
                                 defaultValue: 10,
                                 show : function(data) {
                                     return data.sideimgbool;
                                 }
-                            },
-                            sideVerticalAlign: {
-                                ref: "sideverticalalign",
-                                type: "string",
-                                component: "dropdown",
-                                label: "Vertical align",
-                                options: vSideVertical,
-                                defaultValue: "top:0;bottom:0",
-                                show : function(data) {
-                                    return data.sideimgbool;
-                                }
-                            },    
+                            },                            
                             SideImageSource: {
                                 type: "string",
                                 ref: "sideimgsrc",
@@ -751,7 +757,7 @@ define(['qlik','./js/util'], function (qlik, utils) {
                                 show : function(data) {
                                     return data.sideimgbool && data.sideimgsrc == 'url';
                                 }
-                            },   
+                            },                                                   
                             sideImgOpacity: {                                
                                 type: "number",
                                 component: "slider",
@@ -764,7 +770,31 @@ define(['qlik','./js/util'], function (qlik, utils) {
                                 show : function(data) {
                                     return data.sideimgbool && data.sideimg;
                                 }
-                            },                         
+                            },       
+                            sideVerticalAlign: {
+                                ref: "sideverticalalign",
+                                type: "string",
+                                component: "dropdown",
+                                label: "Vertical align",
+                                options: vSideVertical,
+                                defaultValue: "top:0;bottom:0",
+                                show : function(data) {
+                                    return data.sideimgbool;
+                                }
+                            },   
+                            sideImgPadding: {
+                                type: "number",
+                                component: "slider",
+                                label: "Padding px",
+                                ref: "sideimgpadding",
+                                min: 0,
+                                max: 40,
+                                step: 1,
+                                defaultValue: 0,
+                                show : function(data) {
+                                    return  data.sideimgbool && data.sideimg;
+                                }                               
+                            },                  
                             sideIconBool: {
                                 ref : "sideiconbool",
                                 type : "boolean",
@@ -910,7 +940,24 @@ define(['qlik','./js/util'], function (qlik, utils) {
                                 show : function(data) {
                                     return data.sideimgbool && data.sidenavbool == 'url';
                                 }
-                            }
+                            },
+                            SideNavigationUrlMove: {
+                                ref : "sidenavurlmove",
+                                type : "boolean",
+                                component : "switch",
+                                label : "Use current window",
+                                options: [{
+                                    value: false,
+                                    label: "False"
+                                }, {
+                                    value: true,
+                                    label: "True"
+                                }],
+                                defaultValue: false,
+                                show : function(data) {
+                                    return data.sideimgbool && data.sidenavbool == 'url';
+                                }
+                            },
                             /*sideIconTesting: {
                                 type: "number",  
                                 component: "color-scale-creator",
@@ -1208,6 +1255,59 @@ define(['qlik','./js/util'], function (qlik, utils) {
                                 defaultValue: 1,
                                 show : function(data) {
                                     return  data.borderbool;
+                                }                               
+                            },
+                            borderRadius: {
+                                type: "number",
+                                component: "slider",
+                                label: "Border radius",
+                                ref: "borderradius",
+                                min: 0,
+                                max: 50,
+                                step: 2,
+                                defaultValue: 0,
+                                show : function(data) {
+                                    return  data.borderbool;
+                                }                               
+                            },
+                            //Shadow
+                            shadowBool: {
+                                ref : "shadowbool",
+                                type : "boolean",
+                                component : "switch",
+                                label : "Add a shadow",
+                                options: [{
+                                    value: true,
+                                    label: "On"
+                                }, {
+                                    value: false,
+                                    label: "Off"
+                                }],
+                                defaultValue: false
+                            },
+                            shadowColor: {
+                                ref: "shadowcolor",
+                                label: "Shadow color",
+                                type: "object",  
+                                component: "color-picker",  
+                                defaultValue: {  
+                                    color: "#888888"  
+                                },
+                                show : function(data) {
+                                    return  data.shadowbool;
+                                }
+                            },
+                            shadowWidth: {
+                                type: "number",
+                                component: "slider",
+                                label: "Shadow width",
+                                ref: "shadowwidth",
+                                min: 1,
+                                max: 10,
+                                step: 1,
+                                defaultValue: 10,
+                                show : function(data) {
+                                    return  data.shadowbool;
                                 }                               
                             }
                         }
