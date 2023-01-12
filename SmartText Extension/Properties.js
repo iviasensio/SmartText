@@ -3,6 +3,9 @@ define(['qlik','./js/util'], function (qlik, utils) {
                         value: "unset",
                         label: "Default"
                     },{
+                        value: "Algerian",
+                        label: "Algerian"
+                    },{
                         value: "Arial",
                         label: "Arial"
                     }, {
@@ -44,6 +47,9 @@ define(['qlik','./js/util'], function (qlik, utils) {
                     }, {
                         value: "Tahoma",
                         label: "Tahoma"
+                    }, {
+                        value: "Tw Cen MT",
+                        label: "Tw Cen MT"
                     }, {
                         value: "Verdana",
                         label: "Verdana"

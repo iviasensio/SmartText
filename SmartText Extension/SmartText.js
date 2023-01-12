@@ -294,6 +294,7 @@ function (qlik,style,properties) {
             var vHoverColorBool = layout.hovercolorbool;
 			var vHoverSingleColor = layout.hoversinglecolor;
 			var vHoverImgBool = layout.hoverimgbool && layout.backgroundimgbool;
+			var vImgBool = layout.backgroundimgbool;
 			var vHoverImgOpacity = layout.hoverimgopacity;
 			var vHoverMeasuresBool = layout.hovermeasuresbool;
 
@@ -341,9 +342,9 @@ function (qlik,style,properties) {
 			var vIconSize = layout.sideiconsize  + '%';
 			
 			/*In case there is a background image*/
-			//if(cssBackImg != ''){
+			if(vImgBool){
             	html += '<div id = "SmartText-img-bg-' + vSufixId + '" class="SmartText-img-bg" style = "border-radius:' + vBorderRadius + ';' + cssBackImg + ';opacity:' + layout.backgroundopacity + '"></div>';
-            //}
+            }
 
 			/*In case there is a side image*/
 			if(vImgPath != ''){

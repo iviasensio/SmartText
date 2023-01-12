@@ -36,6 +36,7 @@
     width: 100%;
     height: 100%;
     position: absolute;
+    z-index:-1;
     /*display:flex;*/
 }
 .SmartText-box{
@@ -48,12 +49,12 @@
     padding-right: 15px;
     padding-left: 10px;
     text-overflow: ellipsis;
-    overflow: hidden;
+    overflow-x: hidden;
     line-height: 1.3;
-    overflow-y:hidden;
+    overflow-y:auto;
 }
 .SmartText-span-container:hover{
-    overflow-y:auto;
+    /*overflow-y:auto;*/
 }
 /*.SmartText-span-container > br{
     display:contents;
