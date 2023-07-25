@@ -2,9 +2,10 @@ var vBorderRadius = '0px';
 define( [
 	"qlik",
 	"css!./css/style.css",
+	"css!./css/style1.css",
 	"./Properties"
 ],
-function (qlik,style,properties) {
+function (qlik,style,style1,properties) {
 	'use strict';	
 	return {
 		initialProperties : {
@@ -42,6 +43,7 @@ function (qlik,style,properties) {
 		},
 		paint: function ( $element, layout) {
 			var app = qlik.currApp(this);
+			
 			var vddd = new Date();
 			var vnnn = vddd.getTime();
 			var vrrr = vnnn.toString();
@@ -52,9 +54,16 @@ function (qlik,style,properties) {
 			
 			var currentLocation = String(window.location);		
 			var vCloudBool = false;
+			var vSite = 'server';
 			if(currentLocation.indexOf('qlikcloud.com') > 0){
 				vCloudBool = true;
+				vSite = 'cloud';
+			}else{
+				if(currentLocation.indexOf(':4848') > 0){
+					vSite = 'desktop';
+				}
 			}
+			
 			//Si estoy en cloud y sin url image tengo que tirar de:
 			//https://4r9an7lxszqsyvc.eu.qlikcloud.com/api/v1/apps/9c8d2b22-1d02-440f-a4a8-75be1ce9e7ad/media/files/4.png
 
@@ -63,11 +72,12 @@ function (qlik,style,properties) {
 			if(vCloudBool){
 				appId = app.id;
 			}else{
-				if(app.model.layout.qThumbnail.qUrl){
+				appId = app.model.app.id;
+				/*if(app.model.layout.qThumbnail.qUrl){
 					appId = app.model.layout.qThumbnail.qUrl;
 					appId = appId.replace('/media/','');
 					appId = appId.substring(0,appId.indexOf('/'));				
-				}
+				}*/
 			}
 			
 			var vTagsMatrix = new Array();
@@ -230,53 +240,45 @@ function (qlik,style,properties) {
             var vServerURLBasic = ( config.isSecure ? "https://" : "http://" ) + config.host + (config.port ? ":" + config.port : "") + config.prefix ;									
 			var vServerURL = vServerURLBasic.replace('/single/','/');
 			
-            if(layout.backgroundimgbool){            	
+            if(layout.backgroundimgbool){
             	if(layout.backgroundimgsrc != 'url'){
             		var auximg = layout.backgroundimage;
-            		if(layout.backgroundimage.indexOf('api/v1') == -1){
-			        	if(auximg.indexOf('media') >= 0){
-			            	if(vServerURL.indexOf(':4848') > 0){
-			            		auximg = auximg.replace('media/','media/' + appId + '/');
-			            	}else{
-			            		if(vCloudBool){
-			            			auximg = '/api/v1/apps/' + appId + auximg.replace('media/','media/files/');
-			            		}
-			            	}
+            		var auximg2 = auximg;
+		        	var imgName = auximg.substring(auximg.lastIndexOf('/'));
+            		
+            		if(vSite == 'desktop' && auximg2.indexOf('Default') == -1){
+		        		auximg = '/content/default/' + imgName;		        		
+		        	}else{
+			            if(vSite == 'cloud'){
+			            	auximg = '/api/v1/apps/' + appId + '/media/files/' + imgName;
 			            }else{
-			            	if(auximg.indexOf('content/default') >= 0 && vCloudBool){
-			            		auximg = '/api/v1/apps/' + appId + '/media/files/' + auximg.replace('/content/default/','');
-			            	}
-			            }		            
-			        }else{
-			        	var oldAppId = auximg.substring(13, auximg.indexOf('/media/files/'));
-			        	auximg = auximg.replace(oldAppId,appId);			        	
+			            	if(auximg2.indexOf('appcontent')>0){
+			            		auximg = '/appcontent/' + appId + imgName;
+			            	}			            	
+			            }
 			        }
 		            vBackgroundImage = vServerURL + auximg;		            
 		        }else{
 		        	vBackgroundImage = layout.backgroundimageurl;
 		        }
 	        }
-
+	        
 	        if(vSideImgBool){
 	        	if(layout.sideimgsrc != 'url'){
-		        	var auximg = layout.sideimg;
-		        	if(auximg.indexOf('api/v1') == -1){
-			        	if(auximg.indexOf('media') >= 0){
-			            	if(vServerURL.indexOf(':4848') > 0){
-			            		auximg = auximg.replace('media/','media/' + appId + '/');			            		
-			            	}else{
-			            		if(vCloudBool){
-			            			auximg = '/api/v1/apps/' + appId + auximg.replace('media/','media/files/');
-			            		}
-			            	}
+	        		var auximg = layout.sideimg;
+		        	var auximg2 = auximg;
+		        	var imgName = auximg.substring(auximg.lastIndexOf('/'));
+		        	
+		        	if(vSite == 'desktop' && auximg2.indexOf('Default') == -1){
+		        		auximg = '/content/default/' + imgName;		        		
+		        	}else{
+			            if(vSite == 'cloud'){
+			            	auximg = '/api/v1/apps/' + appId + '/media/files/' + imgName;
 			            }else{
-			            	if(auximg.indexOf('content/default') >= 0 && vCloudBool){
-			            		auximg = '/api/v1/apps/' + appId + '/media/files/' + auximg.replace('content/default','');
-			            	}
+			            	if(auximg2.indexOf('appcontent')>0){
+			            		auximg = '/appcontent/' + appId + imgName;
+			            	}			            	
 			            }
-			        }else{
-			        	var oldAppId = auximg.substring(13, auximg.indexOf('/media/files/'));
-			        	auximg = auximg.replace(oldAppId,appId);
 			        }
 		            vImgPath = vServerURL + auximg;
 		        }else{
@@ -351,7 +353,11 @@ function (qlik,style,properties) {
             	html +=	'<div id = "SmartText-img-container" class = "SmartText-img-container ' + vSideCursor +'" href = "' + vSideRef + '" style = "width:' + vSideImgWidth + '" title = "' + vSideTitle + '">';
             		
         		if(vImgPath != vServerURL){
-        			html += '<image class = "SmartText-img" src="' + vImgPath + '" style = "' + layout.sideverticalalign + ';opacity:' + layout.sideimgopacity + ';margin:' + layout.sideimgpadding + 'px"></image>';        				
+        			var vSideSize = 'unset';
+        			if(layout.sideimgadapt){
+        				vSideSize = '-webkit-fill-available';
+        			}
+        			html += '<image class = "SmartText-img" src="' + vImgPath + '" style = "' + layout.sideverticalalign + ';opacity:' + layout.sideimgopacity + ';margin:' + layout.sideimgpadding + 'px;border-radius:' + vBorderRadius +';height:' + vSideSize + ';"></image>';
         		}
         		if(layout.sideiconbool){
 					//html += '<div id = "SmartText-icon-container" class = "SmartText-icon-container" style = "width:' + vSideIconWidth + ';height:' + vSideIconWidth + ';' + layout.sideverticalalign +'">';
@@ -366,9 +372,9 @@ function (qlik,style,properties) {
         		html += '</div>';        		
             }
             if(vHoverMeasuresBool){
-            	html += '<div id = "SmartText-span-container" class ="SmartText-span-container" style="visibility:hidden">';
+            	html += '<div id = "SmartText-span-container" class ="SmartText-span-container" style="visibility:hidden;overflow-y:' + layout.textscrollbool + ';">';
             }else{
-            	html += '<div id = "SmartText-span-container" class ="SmartText-span-container">';	
+            	html += '<div id = "SmartText-span-container" class ="SmartText-span-container" style="overflow-y:' + layout.textscrollbool + ';">';	
             }
 			
             for(var me = 0;me < vTagsMatrix.length;me++){

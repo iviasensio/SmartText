@@ -5,7 +5,7 @@ Smart Text, a Qlik Sense Extension
 
 Available in https://github.com/iviasensio/SmartText
 
-Current version 2.1 12-jan-2023. Compatible with QS September 2017 or higher
+Current version 2.2 15-jul-2023. Compatible with QS September 2017 or higher
 
 Author Ivan Felipe Asensio QlikTech Iberia,s.l.
 
@@ -24,6 +24,9 @@ This extension is a text object with simple and smart look.
 - allow adding border
 - allow adding a shadow effect
 - Scrolling bug fixed
+
+### v2.2 Features
+- bug fix: losing library images when changing the site or publishing in production
 
 ### WARNING
 
