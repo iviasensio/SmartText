@@ -12,6 +12,9 @@ define(['qlik','./js/util'], function (qlik, utils) {
                         value: "Brush Script MT",
                         label: "Brush Script MT"
                     }, {
+                        value: "Bulgatti",
+                        label: "Bulgatti"
+                    }, {
                         value: "Calibri",
                         label: "Calibri"
                     }, {
@@ -20,6 +23,9 @@ define(['qlik','./js/util'], function (qlik, utils) {
                     }, {
                         value: "erasdust",
                         label: "Eraser"
+                    },{
+                        value: "Handcrafted",
+                        label: "Handcrafted"
                     },{
                         value: "Heebo, sans-serif",
                         label: "Heebo"
@@ -763,7 +769,24 @@ define(['qlik','./js/util'], function (qlik, utils) {
                                 show : function(data) {
                                     return data.sideimgbool && data.sideimgsrc == 'url';
                                 }
-                            },                                                   
+                            },
+                            sideImgAdapt: {
+                                ref : "sideimgadapt",
+                                type : "boolean",
+                                component : "switch",
+                                label : "Imgage size",
+                                options: [{
+                                    value: true,
+                                    label: "Auto"
+                                }, {
+                                    value: false,
+                                    label: "Unset"
+                                }],
+                                defaultValue: false,
+                                show : function(data) {
+                                    return data.sideimgbool;
+                                }
+                            },
                             sideImgOpacity: {                                
                                 type: "number",
                                 component: "slider",
@@ -979,6 +1002,27 @@ define(['qlik','./js/util'], function (qlik, utils) {
                                     return data.sideiconbool && data.sideimgbool;
                                 }
                             }*/                           
+                        }
+                    },
+                    //text container
+                    TextGroup: {
+                        label: "Text container",
+                        type: "items",
+                        items: {
+                            textScrollBool: {
+                                ref : "textscrollbool",
+                                type : "string",
+                                component : "switch",
+                                label : "Allow scroll",
+                                options: [{
+                                    value: "clip",
+                                    label: "Hide"
+                                }, {
+                                    value: "auto",
+                                    label: "Auto"
+                                }],
+                                defaultValue: "auto"
+                            }
                         }
                     },
                     BackgroundGroup: {
@@ -1349,7 +1393,7 @@ define(['qlik','./js/util'], function (qlik, utils) {
                                 component: "text"
                             },
                             paragraph3: {
-                                label: "Last update 18-oct-2021.",
+                                label: "Last update 25-jul-2023.",
                                 component: "text"
                             }
                         }

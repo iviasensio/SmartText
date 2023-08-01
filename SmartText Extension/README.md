@@ -5,7 +5,7 @@ Smart Text, a Qlik Sense Extension
 
 Available in https://github.com/iviasensio/SmartText
 
-Current version 2.2 15-jul-2023. Compatible with QS September 2017 or higher
+Current version 2.2 27-jul-2023. Compatible with QS September 2017 or higher
 
 Author Ivan Felipe Asensio QlikTech Iberia,s.l.
 
