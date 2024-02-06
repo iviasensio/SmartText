@@ -243,6 +243,40 @@ define(['qlik'], function (qlik) {
         return defer.reject('qItems is undefined (listType: ' + Utils.get(['listType'], opts) + ')');
       });
       return defer.promise;
+    },
+    /**
+     * Get a list of Master Visualizations to be used in the property panel.
+     * @param {object} opts - The options to use.
+     * @returns {promise.Promise} - Returns a promise, being resolved with an array of type X.
+     */
+    getMasterObjectList: function () {
+      var self = this;
+      var app = qlik.currApp(this);
+      return new Promise(function (resolve, reject) {
+        app.getList('masterobject').then(function (model) {
+          app.destroySessionObject(model.layout.qInfo.qId);
+          var supportedMasterItems = model.layout.qAppObjectList.qItems;
+
+          if (!supportedMasterItems || supportedMasterItems.length === 0) {
+            return resolve([{
+              value: '',
+              label: 'No MasterObjects',
+              visualization: ''
+            }]);
+          }
+
+          supportedMasterItems.sort(function (item1, item2) {
+            return item1.qMeta.title < item2.qMeta.title ? -1 : 1;
+          });
+          return resolve(supportedMasterItems.map(function (item) {
+            return {
+              value: item.qInfo.qId + '~' + item.qMeta.title,
+              label: item.qMeta.title,
+              visualization: item.qData.visualization
+            };
+          }));
+        });
+      });
     }
   };
 

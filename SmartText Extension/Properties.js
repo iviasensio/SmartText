@@ -18,11 +18,17 @@ define(['qlik','./js/util'], function (qlik, utils) {
                         value: "Calibri",
                         label: "Calibri"
                     }, {
+                        value: "Cormorant Garamond",
+                        label: "Cormorant Garamond"
+                    }, {
                         value: "Comic Sans MS",
                         label: "Comic Sans MS"
                     }, {
                         value: "erasdust",
                         label: "Eraser"
+                    },{
+                        value: "Grape Nuts",
+                        label: "Grape Nuts"
                     },{
                         value: "Handcrafted",
                         label: "Handcrafted"
@@ -33,6 +39,9 @@ define(['qlik','./js/util'], function (qlik, utils) {
                         value: "Ink Free",
                         label: "Ink Free"
                     }, {
+                        value: "LittleWerewolf",
+                        label: "Little Werewolf"
+                    }, {
                         value: "Lucida Handwriting",
                         label: "Lucida Handwriting"
                     }, {
@@ -42,11 +51,17 @@ define(['qlik','./js/util'], function (qlik, utils) {
                         value: "Oswald",
                         label: "Oswald"
                     }, {
+                        value: "Permanent Marker, fantasy",
+                        label: "Permanent Marker"
+                    }, {
                         value: "Playfair Display, serif",
                         label: "Playfair Display"
                     }, {
                         value: "QlikView Sans, sans-serif",
                         label: "QlikView Sans"
+                    }, {
+                        value: "roboto",
+                        label: "Roboto"
                     }, {
                         value: "sans-serif",
                         label: "MS Sans Serif"
@@ -188,6 +203,16 @@ define(['qlik','./js/util'], function (qlik, utils) {
                         icon: "tag",
                         size: "small"
                     }];
+    var vTooltipSize = [{
+                        value: "Small",
+                        label: "Small"
+                    }, {
+                        value: "Medium",
+                        label: "Medium"
+                    }, {
+                        value: "Large",
+                        label: "Large"
+                    }];
     return {
         type: "items",
         component: "accordion",
@@ -235,7 +260,7 @@ define(['qlik','./js/util'], function (qlik, utils) {
                         component: "slider",
                         label: "Padding left",
                         ref: "qDef.textpaddingleft",
-                        min: 5,
+                        min: 0,
                         max: 50,
                         step: 5,
                         defaultValue: 5,
@@ -426,7 +451,7 @@ define(['qlik','./js/util'], function (qlik, utils) {
                         type: "string",
                         ref: "qDef.textcustomcolor",
                         label: "Text color expression",
-                        defaultValue : "='#7b7a78'//RGB and qlik colors also available'",
+                        defaultValue : "='#545352'//RGB and qlik colors also available'",
                         expression : "optional",
                         show : function(data) {
                             return data.qDef.textcolorbool && data.qDef.tagtype == 'text';
@@ -438,7 +463,7 @@ define(['qlik','./js/util'], function (qlik, utils) {
                         type: "object",  
                         component: "color-picker",  
                         defaultValue: {  
-                            color: '#7b7a78'  
+                            color: '#545352'  
                         },
                         show : function(data) {
                             return !data.qDef.textcolorbool && data.qDef.tagtype == 'text';
@@ -540,7 +565,21 @@ define(['qlik','./js/util'], function (qlik, utils) {
                         show : function(data) {
                             return data.qDef.textnavbool == 'url';
                         }
-                    },                   
+                    },
+                    TextActionColorBool: {
+                        ref : "qDef.textactioncolorbool",
+                        type : "boolean",
+                        component : "switch",
+                        label : "Change color on hover",
+                        options: [{
+                            value: false,
+                            label: "False"
+                        }, {
+                            value: true,
+                            label: "True"
+                        }],
+                        defaultValue: false
+                    },   
                     TextActionColor: {
                         ref: "qDef.textactioncolor",
                         label: "Text action color",
@@ -550,7 +589,48 @@ define(['qlik','./js/util'], function (qlik, utils) {
                             color: '#f93f17'  
                         },
                         show : function(data) {
-                            return data.qDef.textactbool != 'none' || data.qDef.textnavbool != 'none';
+                            return data.qDef.textactioncolorbool;
+                        }
+                    },
+                    TextTooltipBool: {
+                        ref : "qDef.texttooltipbool",
+                        type : "boolean",
+                        component : "switch",
+                        label : "Add a tooltip on hover",
+                        options: [{
+                            value: false,
+                            label: "False"
+                        }, {
+                            value: true,
+                            label: "True"
+                        }],
+                        defaultValue: false,                        
+                        show : function(data) {
+                            return data.qDef.tagtype == 'text';
+                        } 
+                    },
+                    TextTooltipId:{
+                        label: 'Add chart',
+                        component: 'dropdown',
+                        type: 'array',
+                        ref: 'qDef.masterItem',
+                        defaultValue: '',
+                        options: function options() {
+                          return utils.getMasterObjectList();
+                        },
+                        show : function(data) {
+                            return data.qDef.texttooltipbool && data.qDef.tagtype == 'text';
+                        }
+                    },
+                    TextTooltipSize: {
+                        ref: "qDef.texttooltipsize",
+                        type: "string",
+                        component: "dropdown",
+                        label: "Chart size",
+                        options: vTooltipSize,
+                        defaultValue: "Medium",
+                        show : function(data) {
+                            return data.qDef.texttooltipbool && data.qDef.tagtype == 'text';
                         }
                     },
                     //Separator
@@ -729,7 +809,24 @@ define(['qlik','./js/util'], function (qlik, utils) {
                                 show : function(data) {
                                     return data.sideimgbool;
                                 }
-                            },                            
+                            },
+                            sideImageBool: {
+                                ref : "sideimagebool",
+                                type : "boolean",
+                                component : "switch",
+                                label : "Add an image",
+                                options: [{
+                                    value: true,
+                                    label: "On"
+                                }, {
+                                    value: false,
+                                    label: "Off"
+                                }],
+                                defaultValue: true,
+                                show : function(data) {
+                                    return data.sideimgbool;
+                                }
+                            },
                             SideImageSource: {
                                 type: "string",
                                 ref: "sideimgsrc",
@@ -747,7 +844,7 @@ define(['qlik','./js/util'], function (qlik, utils) {
                                 ],
                                 defaultValue: "lib",
                                 show : function(data) {
-                                    return data.sideimgbool;
+                                    return data.sideimgbool && data.sideimagebool;
                                 }
                             },                                        
                             sideImg: {
@@ -757,7 +854,7 @@ define(['qlik','./js/util'], function (qlik, utils) {
                                 layoutRef: "sideimg",
                                 type: "string",
                                 show : function(data) {
-                                    return data.sideimgbool && data.sideimgsrc != 'url';
+                                    return data.sideimgbool && data.sideimgsrc != 'url' && data.sideimagebool;
                                 }
                             },
                             sideImageUrl: {
@@ -767,14 +864,14 @@ define(['qlik','./js/util'], function (qlik, utils) {
                                 defaultValue : '',
                                 expression : "optional",
                                 show : function(data) {
-                                    return data.sideimgbool && data.sideimgsrc == 'url';
+                                    return data.sideimgbool && data.sideimgsrc == 'url' && data.sideimagebool;
                                 }
                             },
                             sideImgAdapt: {
                                 ref : "sideimgadapt",
                                 type : "boolean",
                                 component : "switch",
-                                label : "Imgage size",
+                                label : "Image size",
                                 options: [{
                                     value: true,
                                     label: "Auto"
@@ -784,7 +881,7 @@ define(['qlik','./js/util'], function (qlik, utils) {
                                 }],
                                 defaultValue: false,
                                 show : function(data) {
-                                    return data.sideimgbool;
+                                    return data.sideimgbool && data.sideimagebool;
                                 }
                             },
                             sideImgOpacity: {                                
@@ -797,7 +894,7 @@ define(['qlik','./js/util'], function (qlik, utils) {
                                 step: 0.1,
                                 defaultValue: 1,
                                 show : function(data) {
-                                    return data.sideimgbool && data.sideimg;
+                                    return data.sideimgbool && data.sideimg && data.sideimagebool;
                                 }
                             },       
                             sideVerticalAlign: {
@@ -808,7 +905,7 @@ define(['qlik','./js/util'], function (qlik, utils) {
                                 options: vSideVertical,
                                 defaultValue: "top:0;bottom:0",
                                 show : function(data) {
-                                    return data.sideimgbool;
+                                    return data.sideimgbool && data.sideimagebool;
                                 }
                             },   
                             sideImgPadding: {
@@ -817,13 +914,26 @@ define(['qlik','./js/util'], function (qlik, utils) {
                                 label: "Padding px",
                                 ref: "sideimgpadding",
                                 min: 0,
-                                max: 40,
+                                max: 60,
                                 step: 1,
                                 defaultValue: 0,
                                 show : function(data) {
-                                    return  data.sideimgbool && data.sideimg;
+                                    return  data.sideimgbool && data.sideimg && data.sideimagebool;
                                 }                               
-                            },                  
+                            },
+                            sideImgRadius: {
+                                type: "number",
+                                component: "slider",
+                                label: "Image radius",
+                                ref: "sideimgradius",
+                                min: 0,
+                                max: 50,
+                                step: 1,
+                                defaultValue: 0,
+                                show : function(data) {
+                                    return data.sideimgbool && data.sideimagebool;
+                                }
+                            },
                             sideIconBool: {
                                 ref : "sideiconbool",
                                 type : "boolean",
@@ -1299,7 +1409,7 @@ define(['qlik','./js/util'], function (qlik, utils) {
                                 component: "slider",
                                 label: "Border width",
                                 ref: "borderwidth",
-                                min: 1,
+                                min: 0,
                                 max: 10,
                                 step: 1,
                                 defaultValue: 1,
@@ -1355,7 +1465,7 @@ define(['qlik','./js/util'], function (qlik, utils) {
                                 min: 1,
                                 max: 10,
                                 step: 1,
-                                defaultValue: 10,
+                                defaultValue: 5,
                                 show : function(data) {
                                     return  data.shadowbool;
                                 }                               
@@ -1393,7 +1503,7 @@ define(['qlik','./js/util'], function (qlik, utils) {
                                 component: "text"
                             },
                             paragraph3: {
-                                label: "Last update 25-jul-2023.",
+                                label: "Last update 30-jan-2024.",
                                 component: "text"
                             }
                         }

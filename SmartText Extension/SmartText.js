@@ -120,7 +120,7 @@ function (qlik,style,style1,properties) {
 		         			vTextColor = m.textsinglecolor.color;
 		         		}
 		         		var vActionColor = vTextColor;
-		         		if((m.textactbool != 'none' || m.textnavbool != 'none') && m.textactioncolor){
+		         		if(m.textactioncolorbool){
 		         			vActionColor = m.textactioncolor.color;		         		
 		         		}
 		         		
@@ -168,10 +168,13 @@ function (qlik,style,style1,properties) {
 		         		if(vAction == 'selvarvalues'){
 		         			vCursor = 'SmartText-cursor-action-var';
 		         		}
-						if(vCursor != ''){
+						if(vCursor != '' || m.textactioncolorbool){
 							vCursor += ' SmartText-cursor';
 						}
-		         		myJsonDataRow = { "type":m.tagtype,"text":vText,"size":m.textsize,"paddingleft":m.textpaddingleft + 'px', "paddingright":m.textpadding + 'px',"paddingtop":m.textpaddingtop + 'px',"position":m.textposition,"align":m.textalign,"font":m.textfont,"color":vTextColor,"actioncolor":vActionColor,"bold":vBold,"italic":vItalic,"underlined":vUnderlined,"shadow":vShadow,"navbool":m.textnavbool,"title":vTitle,"cursor":vCursor,"action":vAction,"actionlabel":vActionLabel,"actionvalue":vActionValue,"ref":vRef};
+						if(m.texttooltipbool){
+							vCursor += ' SmartText-tooltip';
+						}
+		         		myJsonDataRow = { "type":m.tagtype,"text":vText,"size":m.textsize,"paddingleft":m.textpaddingleft + 'px', "paddingright":m.textpadding + 'px',"paddingtop":m.textpaddingtop + 'px',"position":m.textposition,"align":m.textalign,"font":m.textfont,"color":vTextColor,"actioncolor":vActionColor,"bold":vBold,"italic":vItalic,"underlined":vUnderlined,"shadow":vShadow,"navbool":m.textnavbool,"title":vTitle,"cursor":vCursor,"action":vAction,"actionlabel":vActionLabel,"actionvalue":vActionValue,"ref":vRef,"tooltipbool":m.texttooltipbool,"tooltipchart":m.masterItem,"tooltipsize":m.texttooltipsize};
 					break;
 
 					case 'separator':						
@@ -194,29 +197,17 @@ function (qlik,style,style1,properties) {
 			var vBorderBool = layout.borderbool;			
 			var vBorder = 'none';
 			var vBorderWidth = 0;
-					
+			var vSideImgRadius = layout.sideimgradius;
+			if(vSideImgRadius == 'undefined'){
+				vSideImgRadius = '0%';
+			}else{
+				vSideImgRadius += '%';
+			}
 			
 			if(vBorderBool){
             	vBorder = layout.borderwidth + 'px solid ' + layout.bordercolor.color;
             	vBorderRadius = layout.borderradius + 'px';
             	vBorderWidth = layout.borderwidth * 2;
-            	/*switch (layout.borderwidth){
-            		case 1:
-            			vBorderWidth = 2;
-            		break;
-            		case 2:
-            			vBorderWidth = 3;
-            		break;
-            		case 3:
-            			vBorderWidth = 4;
-            		break;
-            		case 4:
-            			vBorderWidth = 7;
-            		break;
-            		case 5:
-            			vBorderWidth = 10;
-            		break;
-            	}*/
             }
 			var vBackgroundColorBool = layout.backgroundcolorbool;			
 			var vBackgroundColor = layout.backsinglecolor.color;
@@ -261,6 +252,7 @@ function (qlik,style,style1,properties) {
 		        }else{
 		        	vBackgroundImage = layout.backgroundimageurl;
 		        }
+		        vBackgroundImage = vBackgroundImage.replace(/\s/g,'%20');
 	        }
 	        
 	        if(vSideImgBool){
@@ -349,16 +341,17 @@ function (qlik,style,style1,properties) {
             }
 
 			/*In case there is a side image*/
-			if(vImgPath != ''){
+			if(layout.sideimgbool){
             	html +=	'<div id = "SmartText-img-container" class = "SmartText-img-container ' + vSideCursor +'" href = "' + vSideRef + '" style = "width:' + vSideImgWidth + '" title = "' + vSideTitle + '">';
-            		
-        		if(vImgPath != vServerURL){
-        			var vSideSize = 'unset';
-        			if(layout.sideimgadapt){
-        				vSideSize = '-webkit-fill-available';
-        			}
-        			html += '<image class = "SmartText-img" src="' + vImgPath + '" style = "' + layout.sideverticalalign + ';opacity:' + layout.sideimgopacity + ';margin:' + layout.sideimgpadding + 'px;border-radius:' + vBorderRadius +';height:' + vSideSize + ';"></image>';
-        		}
+            	if(layout.sideimagebool != false){	
+	        		if(vImgPath != vServerURL){
+	        			var vSideSize = 'unset';
+	        			if(layout.sideimgadapt){
+	        				vSideSize = '-webkit-fill-available';
+	        			}
+	        			html += '<image class = "SmartText-img" src="' + vImgPath + '" style = "' + layout.sideverticalalign + ';opacity:' + layout.sideimgopacity + ';margin:' + layout.sideimgpadding + 'px;border-radius:' + vSideImgRadius +';height:' + vSideSize + ';"></image>';
+	        		}
+	        	}
         		if(layout.sideiconbool){
 					//html += '<div id = "SmartText-icon-container" class = "SmartText-icon-container" style = "width:' + vSideIconWidth + ';height:' + vSideIconWidth + ';' + layout.sideverticalalign +'">';
 					html += '<div id = "SmartText-icon-container" class = "SmartText-icon-container" style = "height:' + vSideIconWidth + ';' + layout.sideverticalalign +'">';
@@ -380,7 +373,7 @@ function (qlik,style,style1,properties) {
             for(var me = 0;me < vTagsMatrix.length;me++){
             	switch(vTagsMatrix[me].type){
             		case 'text':
-            			html += fillText(vTagsMatrix[me]);
+            			html += fillText(vTagsMatrix[me],me);
             		break;
             		case 'separator':
             			html += fillSeparator(vTagsMatrix[me]);
@@ -392,12 +385,12 @@ function (qlik,style,style1,properties) {
 			
 			html += '</div></div></div>';	
 
-			function fillText(vTagsText){
+			function fillText(vTagsText,TagPos){
 				var htmlText = '';
 				if(vTagsText.position == 'below'){
             		htmlText += '<br>';
             	}				
-				htmlText += '<span class ="SmartText-span ' + vTagsText.size + ' ' + vTagsText.cursor + ' ' + vTagsText.shadow + ' SmartText-span-' + vTagsText.align + '" href = "' + vTagsText.ref +'" src = "IN:' + vTagsText.actioncolor + '@OUT:' + vTagsText.color + '" style = "font-family:' + vTagsText.font + ';text-align:' + vTagsText.align + ';padding-left:' + vTagsText.paddingleft + ';padding-right:' + vTagsText.paddingright + ';padding-top:' + vTagsText.paddingtop + ';color:' + vTagsText.color + ';font-weight:' + vTagsText.bold + ';font-style:' + vTagsText.italic + ';text-decoration:' + vTagsText.underlined + '" title = "' + vTagsText.title + '" name="' + vTagsText.actionlabel + '||' + vTagsText.actionvalue + '">' +
+				htmlText += '<span class ="SmartText-span ' + vTagsText.size + ' ' + vTagsText.cursor + ' ' + vTagsText.shadow + ' SmartText-span-' + vTagsText.align + '" href = "' + vTagsText.ref +'" src = "IN:' + vTagsText.actioncolor + '@OUT:' + vTagsText.color + '@POS:' + TagPos + '" style = "font-family:' + vTagsText.font + ';text-align:' + vTagsText.align + ';padding-left:' + vTagsText.paddingleft + ';padding-right:' + vTagsText.paddingright + ';padding-top:' + vTagsText.paddingtop + ';color:' + vTagsText.color + ';font-weight:' + vTagsText.bold + ';font-style:' + vTagsText.italic + ';text-decoration:' + vTagsText.underlined + '" title = "' + vTagsText.title + '" name="' + vTagsText.actionlabel + '||' + vTagsText.actionvalue + '">' +
 					vTagsText.text + 
 				'</span>';
 
@@ -418,7 +411,9 @@ function (qlik,style,style1,properties) {
 			
 			if(layout.shadowbool){
 				var vBorderShadow = '';
-				vBorderShadow = 'div[tid="' + vId + '"] .qv-object {border-radius:' + vBorderRadius +';box-shadow: 5px ' + layout.shadowwidth + 'px 18px ' + layout.shadowcolor.color + ';}';
+				var vShadowPx = layout.shadowwidth;
+				var vShadowPx3 = (layout.shadowwidth * 3) + 3;
+				vBorderShadow = 'div[tid="' + vId + '"] .qv-object {border-radius:' + vBorderRadius +';box-shadow: ' + vShadowPx + 'px ' + vShadowPx + 'px ' + vShadowPx3 + 'px ' + layout.shadowcolor.color + ';}';
 				$('<style id="smarttext-style-' + vId + '"></style>').html(vBorderShadow).appendTo('head');
 			}
 			
@@ -482,15 +477,40 @@ function (qlik,style,style1,properties) {
 					}
 				}
 			})
+
+			//add a tooltip on hover
+			var modalIn = false;			
+			$('.SmartText-tooltip').on('mouseenter', function(event){
+				if(!modalIn){
+					var vTagPos = this.getAttribute('src').substring(27);
+					var vObjId = vTagsMatrix[vTagPos].tooltipchart.split('~')[0];
+					var vModalSize = vTagsMatrix[vTagPos].tooltipsize;
+					app.getObject(vTagPos,vObjId);
+						
+					var htmlPopup =	'<div id="SmartText-Modal" class="SmartText-modal SmartText-modal-' + vModalSize + '">' +
+						'<div class="qv-object SmartText-Modal-Chart" id = "' + vTagPos + '"></div>' +
+						'<div id = "closeModal" class = "SmartText-closeModal">x</div>' +
+						'</div>';
+					$('#SmartText-box-' + vSufixId).append(htmlPopup);				
+					modalIn = true;					
+				}
+				
+			})
+			$(document).on("click", ".SmartText-closeModal", function() {
+				$('#SmartText-Modal').remove();	
+				modalIn = false;
+			});
+					
+			//Change color on hover
 			$('.SmartText-cursor').on('mouseenter', function(event){
-				var INColor = this.attributes[1].nodeValue.substring(3,10);
+				var INColor = this.getAttribute('src').substring(3,10);
 				$(this).css("color", INColor);
 			})
-			$('.SmartText-cursor').on('mouseleave', function(event){
-				var OUTColor = this.attributes[1].nodeValue.substring(15);
-				$(this).css("color", OUTColor);
+			$('.SmartText-cursor').on('mouseleave', function(event){				
+				var OUTColor = this.getAttribute('src').substring(15,22);
+				$(this).css("color", OUTColor);				
 			})
-
+			
 			//on hover
 			$('#SmartText-box-' + vSufixId).on('mouseenter', function(event){
 				if(qlik.navigation.getMode() == 'analysis' || qlik.navigation.getMode() == 'play'){

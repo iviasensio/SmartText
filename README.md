@@ -5,7 +5,7 @@ Smart Text, a Qlik Sense Extension
 
 Available in https://github.com/iviasensio/SmartText
 
-Current version 2.0 6-apr-2022. Compatible with QS September 2017 or higher
+Current version 3.0 30-jan-2024. Compatible with QS September 2017 or higher
 
 Author Ivan Felipe Asensio QlikTech Iberia,s.l.
 
@@ -20,6 +20,21 @@ This extension is a text object with simple and smart look.
 - allow adding transparencies in images and opacity in background colors
 - allow exec together actions to select in fields or variables and navigation to sheet or external url
 
+### v2.1 Features
+- allow adding border
+- allow adding a shadow effect
+- Scrolling bug fixed
+
+### v2.2 Features
+- bug fix: losing library images when changing the site or publishing in production
+
+### v3.0 Features
+- Better side block options
+- More fonts
+- More shadow and look effects
+- Option to add tooltip to texts
+- Better responsive options
+
 ### WARNING
 
 ### Look
@@ -30,18 +45,15 @@ This extension is a text object with simple and smart look.
 *Install in SaaS:
 - download the package and zip the extension stuff as SmartText Extension.zip
 - in the Management Console open the menu Extensions and import the zip
-- optional : in the main hub open the menu Import apps and import SDG - 12. Responsible Consumption & Production.qvf
-- optional : zip the folder '17 SDGs Theme' and import it as a theme in the management console
+- optional : in the main hub open the menu Import apps and import Titanic.qvf
 
 *Install in Server:
 - download the package and zip the extension stuff as SmartText Extension.zip
 - in the QMC open the menu Extensions and import the zip
-- optional : in the qmc open the menu apps and import SDG - 12. Responsible Consumption & Production.qvf
-- optional : zip the folder '17 SDGs Theme' and import it as an extension in the server
-
+- optional : in the qmc open the menu apps and import Titanic.qvf
 
 *Install in Desktop
 - download the package and copy the folder 'SmartText Extension' in C:\Users\'username'\Documents\Qlik\Sense\Extensions
-- copy the example SDG - 12. Responsible Consumption & Production.qvf in C:\Users\'username'\Documents\Qlik\Sense\Apps
-- copy the theme folder '17 SDGs Theme' in C:\Users\'username'\Documents\Qlik\Sense\Extensions
+- copy the example Titanic.qvf in C:\Users\'username'\Documents\Qlik\Sense\Apps
+
 

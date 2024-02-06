@@ -1,32 +1,42 @@
 @font-face {
     font-family: 'Jost';
     src: url('../fonts/Jost.ttf');
-    /* IE9 Compat Modes */
 }
 @font-face {
     font-family: 'OpenSans';
     src: url('../fonts/OpenSans-Regular.ttf');
-    /* IE9 Compat Modes */
 }
 @font-face {
     font-family: 'OpenSans-Light';
     src: url('../fonts/OpenSans-Light.ttf');
-    /* IE9 Compat Modes */
 }
 @font-face {
     font-family: 'OpenSans-Semi';
     src: url('../fonts/OpenSans-SemiBold.ttf');
-    /* IE9 Compat Modes */
 }
 @font-face {
     font-family: 'EraserRegular';
     src: url('../fonts/EraserRegular-DO1D.ttf');
-    /* IE9 Compat Modes */
 }
 @font-face {
     font-family: 'erasdust';
     src: url('../fonts/erasdust.ttf');
-    /* IE9 Compat Modes */
+}
+@font-face {
+    font-family: 'Handcrafted';
+    src: url('../fonts/Handcrafted.ttf');
+}
+@font-face {
+    font-family: 'LittleWerewolf';
+    src: url('../fonts/LittleWerewolf.ttf');
+}
+@font-face {
+    font-family: 'Cormorant Garamond';
+    src: url('../fonts/CormorantGaramond-Medium.ttf');
+}
+@font-face {
+    font-family: 'Grape Nuts';
+    src: url('../fonts/GrapeNuts-Regular.ttf');
 }
 .SmartText-extension{
     width:100%;
@@ -51,7 +61,7 @@
     text-overflow: ellipsis;
     overflow-x: hidden;
     line-height: 1.3;
-    overflow-y:auto;
+    /*overflow-y:auto;*/
 }
 .SmartText-span-container:hover{
     /*overflow-y:auto;*/
@@ -141,11 +151,8 @@
 
 .SmartText-img {
     width:100%;
-    /*height:100%;*/
-    object-fit:contain;
+    object-fit:cover;
     position: absolute;
-    /*top: 0;
-    bottom: 0;*/
     left: 0;
     right: 0;
     margin: auto;
@@ -199,239 +206,74 @@
 .SmartText-img-bottomRight{
     right:0;bottom:-15px;
 }
+.SmartText-tooltip {
+}
+.SmartText-modal {
+  /*display: none;*/
+  white-space: pre;
+  position: absolute;
+  margin-left:40px;
+  /*top:40px;*/
+  /*left:100px;*/
+  padding-left: 10px;
+  padding-right: 10px;
+  opacity:0.95;
+  border-radius: 14px;
+  border:1px solid;
+  border-color: #ccc;
+  color:#fff;  
+  z-index:10;
+  background: #333;
+  font-family: arial;
+}
 
+.SmartText-modal-Small{
+    /*width:280px;
+    height:140px;*/
+    width:40%;
+    height:40%;
+    top:30%;
+    left:30%;
+}
 
-@media screen and (max-width:1680px){
-    .SmartText-span-xxs{
-        font-size:13px;
-    }
-    .SmartText-span-xs{
-        font-size:14px;
-    }
-    .SmartText-span-s{
-        font-size:15px;
-    }
-    .SmartText-span-m{
-        font-size:17px;
-    }
-    .SmartText-span-ml{
-        font-size:19px;
-    }
-    .SmartText-span-l{
-        font-size:23px;
-    }
-    .SmartText-span-xl{
-        font-size:26px;
-    }
-    .SmartText-span-xxl{
-        font-size:39px;
-    }
-    .SmartText-span-xxxl{
-        font-size:40px;
-    }
-    .SmartText-span-xxxxl{
-        font-size:50px;
-    }
+.SmartText-modal-Medium{
+    /*width:560px;
+    height:280px;*/
+    width:60%;
+    height:60%;
+    top:20%;
+    left:20%;
 }
-@media screen and (max-width:1600px){
-    .SmartText-span-xxs{
-        font-size:12.5px;
-    }
-    .SmartText-span-xs{
-        font-size:13.5px;
-    }
-    .SmartText-span-s{
-        font-size:14.5px;
-    }
-    .SmartText-span-m{
-        font-size:16px;
-    }
-    .SmartText-span-ml{
-        font-size:18px;
-    }
-    .SmartText-span-l{
-        font-size:22px;
-    }
-    .SmartText-span-xl{
-        font-size:25px;
-    }
-    .SmartText-span-xxl{
-        font-size:37px;
-    }
-    .SmartText-span-xxxl{
-        font-size:39px;
-    }
-    .SmartText-span-xxxxl{
-        font-size:47px;
-    }
+
+.SmartText-modal-Large{
+    /*width:840px;
+    height:420px;*/
+    width:80%;
+    height:80%;
+    top:10%;
+    left:10%;
 }
-@media screen and (max-width:1440px){
-    .SmartText-span-xxs{
-        font-size:12px;
-    }
-    .SmartText-span-xs{
-        font-size:13px;
-    }
-    .SmartText-span-s{
-        font-size:14px;
-    }
-    .SmartText-span-m{
-        font-size:15px;
-    }
-    .SmartText-span-ml{
-        font-size:17px;
-    }
-    .SmartText-span-l{
-        font-size:20px;
-    }
-    .SmartText-span-xl{
-        font-size:23px;
-    }
-    .SmartText-span-xxl{
-        font-size:34px;
-    }
-    .SmartText-span-xxxl{
-        font-size:36px;
-    }
-    .SmartText-span-xxxxl{
-        font-size:44px;
-    }
-    .SmartText-span-container{
-        line-height:1.2;
-    }
+
+.SmartText-Modal-Chart{
+    width:90%;
+    height:calc(100% - 10px);
+    top:5px;
 }
-@media screen and (max-width:1366px){
-    .SmartText-span-xxs{
-        font-size:11.5px;
-    }
-    .SmartText-span-xs{
-        font-size:12.5px;
-    }
-    .SmartText-span-s{
-        font-size:13.5px;
-    }
-    .SmartText-span-m{
-        font-size:14px;
-    }
-    .SmartText-span-ml{
-        font-size:16px;
-    }
-    .SmartText-span-l{
-        font-size:18px;
-    }
-    .SmartText-span-xl{
-        font-size:21px;
-    }
-    .SmartText-span-xxl{
-        font-size:30px;
-    }
-    .SmartText-span-xxxl{
-        font-size:31px;
-    }
-    .SmartText-span-xxxxl{
-        font-size:40px;
-    }
+
+.SmartText-closeModal{
+    color: #ccc;
+    right: 7px;
+    padding:5px;
+    top: 0;
+    position: absolute;
+    font-size: 20px;
+    /* font-weight: bold; */
+    cursor: pointer;
+    z-index: 3;
 }
-@media screen and (max-width:1280px){
-    .SmartText-span-xxs{
-        font-size:11px;
-    }
-    .SmartText-span-xs{
-        font-size:11.5px;
-    }
-    .SmartText-span-s{
-        font-size:12.5px;
-    }
-    .SmartText-span-m{
-        font-size:13px;
-    }
-    .SmartText-span-ml{
-        font-size:14px;
-    }
-    .SmartText-span-l{
-        font-size:15px;
-    }
-    .SmartText-span-xl{
-        font-size:18px;
-    }
-    .SmartText-span-xxl{
-        font-size:26px;
-    }
-    .SmartText-span-xxxl{
-        font-size:28px;
-    }
-    .SmartText-span-xxxxl{
-        font-size:35px;
-    }  
-}
-@media screen and (max-width:1024px){
-    .SmartText-span-xxs{
-        font-size:11px;
-    }
-    .SmartText-span-xs{
-        font-size:11px;
-    }
-    .SmartText-span-s{
-        font-size:11px;
-    }
-    .SmartText-span-m{
-        font-size:11px;
-    }
-    .SmartText-span-ml{
-        font-size:11px;
-    }
-    .SmartText-span-l{
-        font-size:11.5px;
-    }
-    .SmartText-span-xl{
-        font-size:15px;
-    }
-    .SmartText-span-xxl{
-        font-size:20px;
-    }
-    .SmartText-span-xxxl{
-        font-size:21px;
-    }
-    .SmartText-span-xxxxl{
-        font-size:27px;
-    }  
-    .SmartText-span-container{
-        line-height:1.1;
-        padding-right: 10px;
-    }
-}
-@media screen and (max-width:640px),(max-height:480px) {
-    .SmartText-span-xxs{
-        font-size:11px;
-    }
-    .SmartText-span-xs{
-        font-size:11.5px;
-    }
-    .SmartText-span-s{
-        font-size:12.5px;
-    }
-    .SmartText-span-m{
-        font-size:13px;
-    }
-    .SmartText-span-ml{
-        font-size:14px;
-    }
-    .SmartText-span-l{
-        font-size:15px;
-    }
-    .SmartText-span-xl{
-        font-size:18px;
-    }
-    .SmartText-span-xxl{
-        font-size:26px;
-    }
-    .SmartText-span-xxxl{
-        font-size:28px;
-    }
-    .SmartText-span-xxxxl{
-        font-size:35px;
-    }  
-}
+
+@import "style1.css";
+
 /*@media screen and (max-width:736px){
     .SmartText-extension{
         height: auto;

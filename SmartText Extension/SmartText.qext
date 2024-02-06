@@ -3,7 +3,7 @@
 	"description" : "Smart Text for Qlik Sense",
 	"icon" : "text",
 	"type" : "visualization",
-	"version" : "2.2",	
+	"version" : "3.0",	
 	"author" : "Ivan Felipe",
 	"email" : "ivan.felipe@qlik.com",
 	"company" : "QlikTech Iberia",
